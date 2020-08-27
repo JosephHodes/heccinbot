@@ -15,16 +15,24 @@ client.on('ready', () => {
 
 client.on('message', async message => {
 	if(message.content === prefix + "join"){
-	if (message.member.voice.channel) {
-        const connection = await message.member.voice.channel.join();
-        console.log(connection);
-    }
-}
-});
+        if (message.member.voice.channel) {
+            const connection = await message.member.voice.channel.join();
+            console.log(connection);
+        }else{
+            message.reply("sorry your not connected");
+        }
+}});
+client.on('message',async msg=>{
+    if(msg.content === prefix + "leave"){
+        if (msg.member.voice.channel) {
+            const connection = await message.member.voice.channel.leave();
+            console.log(connection);
+        }
+})
 
 client.on('message', msg => {
-  if (msg.content === prefix+'Setprefix') {
-    prefix = msg.content.indexOf(0,1);
+  if (msg.content === prefix+'Setprefix'||prefix+'setprefix') {
+    prefix = (msg.content).split(" "[1]).slice(0,1)
     msg.reply("```"+"Your new prefix is: "+prefix+"```")
   }
 });
