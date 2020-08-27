@@ -3,17 +3,29 @@ const path = require('path')
 const x = require('dotenv').config({path: path.
     resolve('/../home/joseph/Desktop', '.env')
 });
+
 const apikey = process.env.Api_key;
 const client = new Discord.Client();
 const  prefix = "!"
+
 client.on('ready', () => {
     console.log(x);
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
+client.on('message', async message => {
+	if(message.content === prefix + "join"){
+	if (message.member.voice.channel) {
+        const connection = await message.member.voice.channel.join();
+        console.log(connection);
+    }
+}
+});
+
 client.on('message', msg => {
-  if (msg.content === 'why are we here') {
-    msg.reply('Pong!');
+  if (msg.content === prefix+'Setprefix') {
+    prefix = msg.content.indexOf(0,1);
+    msg.reply("```"+"Your new prefix is: "+prefix+"```")
   }
 });
 
