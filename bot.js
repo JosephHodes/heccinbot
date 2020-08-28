@@ -30,14 +30,6 @@ client.on('message',async msg=>{
         }
 }});
 
-client.on('message', msg => {
-  if (msg.content.split(" "[0]) === prefix+'Setprefix'||prefix+'setprefix') {
-    const prefix = (msg.content).split(" "[1]).slice(0,1)
-    msg.reply("```"+"Your new prefix is: "+prefix+"```")
-  }else{
-      msg.reply(console.error())
-  }
-});
 client.on('message', msg=>{
     if (msg.content==="shutdown"){
         apikey = null;
