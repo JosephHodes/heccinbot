@@ -7,10 +7,10 @@ const x = require('dotenv').config({path: path.
 
 const apikey = process.env.Api_key;
 const client = new Discord.Client();
-const  prefix = "!"
+const  prefix = "!";
+const OOF = "";
 
-client.on('ready', () => {
-    console.log(x);
+client.on('ready', ()=>{
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
@@ -21,19 +21,28 @@ client.on('message', async message => {
             console.log(connection);
         }else{
             message.reply("sorry your not connected");
-        }
-        if(msg.content === prefix + "leave"){
-            if (msg.member.voice.channel) {
-                const connection = await message.member.voice.channel.leave();
-                console.log(connection);
-            }else{
-                message.reply("please join a voice channel")
-            }
-}}});
+        }}});
+client.on('message', msg=>{
+    if (msg.content==="shutdown"){
+        apikey = null;
+    }
+});
+
+// client.on('message',function (user, userID, channelID, message, evt)  {
+//     var ServerID = client.channels[channelID].guild_id;
+//     message.reply(ServerID)
+// })
+
+
 client.on('message',async msg=>{
-        if (msg.content==="shutdown"){
-            apikey = null;
+    if(msg.content === prefix + "leave"){
+        if (msg.member.voice.channel) {
+            const connection = await message.member.voice.channel.leave();
+            console.log(connection);
+        }else{
+            message.reply("please join a voice channel")
         }
+}
 });
 
 
