@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const path = require('path')
+
 const x = require('dotenv').config({path: path.
     resolve('/../home/joseph/Desktop', '.env')
 });
@@ -21,19 +22,20 @@ client.on('message', async message => {
         }else{
             message.reply("sorry your not connected");
         }
-}});
+        if(msg.content === prefix + "leave"){
+            if (msg.member.voice.channel) {
+                const connection = await message.member.voice.channel.leave();
+                console.log(connection);
+            }else{
+                message.reply("please join a voice channel")
+            }
+}}});
 client.on('message',async msg=>{
-    if(msg.content === prefix + "leave"){
-        if (msg.member.voice.channel) {
-            const connection = await message.member.voice.channel.leave();
-            console.log(connection);
+        if (msg.content==="shutdown"){
+            apikey = null;
         }
-}});
+});
 
-client.on('message', msg=>{
-    if (msg.content==="shutdown"){
-        apikey = null;
-    }
-})
 
-client.login(apikey);
+
+client.login((apikey));
