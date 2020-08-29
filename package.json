@@ -24,6 +24,7 @@
   "homepage": "https://github.com/jojoho70/heccinbot#readme",
   "dependencies": {
     "discord.js": "^12.3.1",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "sql": "^0.78.0"
   }
 }
