@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
 const path = require('path')
+const fs = require('fs')
+
 
 const x = require('dotenv').config({path: path.
     resolve('/../home/joseph/Desktop', '.env')
@@ -8,7 +10,7 @@ const x = require('dotenv').config({path: path.
 const apikey = process.env.Api_key;
 const client = new Discord.Client();
 const  prefix = "!";
-const OOF = "";
+const serverid = "";
 
 client.on('ready', ()=>{
   console.log(`Logged in as ${client.user.tag}!`);
@@ -28,10 +30,11 @@ client.on('message', msg=>{
     }
 });
 
-// client.on('message',function (user, userID, channelID, message, evt)  {
-//     var ServerID = client.channels[channelID].guild_id;
-//     message.reply(ServerID)
-// })
+client.on('message',msg=>  {
+   
+    serverid==msg.guild.id
+    console.log(msg.guild.id)
+})
 
 
 client.on('message',async msg=>{
