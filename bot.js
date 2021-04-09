@@ -31,7 +31,6 @@ client.on('message', msg=>{
 });
 
 client.on('message',msg=>  {
-   
     serverid==msg.guild.id
     console.log(msg.guild.id)
 })
