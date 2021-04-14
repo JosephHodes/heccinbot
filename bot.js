@@ -1,8 +1,6 @@
 const Discord = require('discord.js');
-
-
-
 require('dotenv').config();
+
 const apikey = process.env.apikey;
 const client = new Discord.Client();
 const prefix = "!";
