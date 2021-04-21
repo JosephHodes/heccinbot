@@ -18,15 +18,19 @@ var firebaseConfig = {
 
 const fire = require("firebase").default.initializeApp(firebaseConfig);
 
-client.on('ready', () => {
+client.on("guildBanAdd", ban => {
     console.log(`Logged in as ${client.user.tag}!`);
     const x = client.guilds.cache.map(guil => guil.id)
     
-        console.log(x)
+        
     x.forEach(ee=>{
+        if(!(ban.id==ee)){
+            client.guilds.fetch(ee).then(eee=>eee.member().ban({reason:"this is a automated ban through the bot"}).then(xx=>console.log("bann successfull")).catch(ree=>{throw ree}))
+        }
     client.guilds.fetch(ee).then(x=>{
         x.fetchBans().then(sys=>{
             console.log(sys)
+           
         }
         ).catch(err=>{throw err})})
     })
