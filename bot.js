@@ -21,16 +21,17 @@ const fire = require("firebase").default.initializeApp(firebaseConfig);
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     const x = client.guilds.cache.map(guil => guil.id)
-    x.forEach(element => {
-        client.guilds.fetch(element).then(man => {
-            man.fetchBans().then(banned => {
-                let list = banned.map(user => user.tag).join('\n');
-                console.log(list);
-            })
-        }).catch(err => console.log(err))
-    });
+    
+        console.log(x)
+    x.forEach(ee=>{
+    client.guilds.fetch(ee).then(x=>{
+        x.fetchBans().then(sys=>{
+            console.log(sys)
+        }
+        ).catch(err=>{throw err})})
+    })
+    })
 
-})
 client.on('guildBanAdd', ban => {
 
 })
