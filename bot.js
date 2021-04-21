@@ -15,7 +15,9 @@ var firebaseConfig = {
     appId: process.env.appId,
     measurementId: process.measurementId
 };
+
 const fire = require("firebase").default.initializeApp(firebaseConfig);
+
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     const x = client.guilds.cache.map(guil => guil.id)
@@ -29,7 +31,9 @@ client.on('ready', () => {
     });
 
 })
+client.on('guildBanAdd', ban => {
 
+})
 
 
 
