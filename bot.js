@@ -18,7 +18,7 @@ console.log(x);
 
  x.forEach(guildholding=>{if(!(ban.id===guildholding)){if((ban.fetchBans().then(mann =>{mann.forEach(mmm=>{if(mmm.user.username===user.username){return false} });
 
-return true})))client.guilds.fetch(guildholding).then(eee=>eee.members.ban(user.id,{reason:"this is a asyncronous ban across all servers"})).then(console.log("ban successful the user was: " +user.username)).catch(err=>console.log(err)) }})});
+return true})))client.guilds.fetch(guildholding).then(eee=>eee.members.ban(user.id,{reason:"this is a asyncronous ban across all servers"})).then(console.log("ban successful the user was: " +user.username)).catch(err=>{throw err}) }})});
 
 
 client.login((apikey));
