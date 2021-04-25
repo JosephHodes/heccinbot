@@ -25,9 +25,13 @@ client.login((apikey));
 
 client.on("guildBanRemove", (guild, user)=>{
 const x = client.guilds.cache.map(guil => guil.id);
- x.forEach(guildholding=>{if(!(guild.id===guildholding)){if((guild.fetchBans().then(mann =>{
+ x.forEach(guildholding=>{
+     if(!(guild.id===guildholding)){if((guild.fetchBans()
+        .then(mann =>{
     mann.forEach(mmm=>{if(mmm.user.username===user.username)
     {return true} 
-});return false})))
+});
+return false;
+})))
 client.guilds.fetch(guildholding).then(eee=>eee.members.unban(user.id,{reason:'this is a asyncronous unban across all servers | server: '+guild.name})).then(console.log("unban successful the user was: " +user.username)).catch(err=> console.log("")) }})
 })
