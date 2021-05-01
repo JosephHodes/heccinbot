@@ -25,6 +25,7 @@
   "dependencies": {
     "discord.js": "^12.5.3",
     "dotenv": "^8.2.0",
+    "faker": "^5.5.3",
     "firebase": "^8.4.1",
     "sql": "^0.78.0"
   }
