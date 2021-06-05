@@ -40,19 +40,19 @@ client.on("guildBanAdd", (ban, user) => {
 
 
 client.on("guildBanRemove", (guild, user) => {
-    const x = client.guilds.cache.map(guil => guil.id);
-    x.forEach(guildholding => {
+    const CurrentGuilds = client.guilds.cache.map(guil => guil.id);
+    CurrentGuilds.forEach(guildholding => {
         if (!(guild.id === guildholding)) {
             if ((guild.fetchBans()
-                    .then(mann => {
-                        mann.forEach(mmm => {
-                            if (mmm.user.username === user.username) {
+                    .then(AllUsers => {
+                        AllUsers.forEach(user => {
+                            if (user.user.username === user.username) {
                                 return true
                             }
                         });
                         return false;
                     })))
-                client.guilds.fetch(guildholding).then(eee => eee.members.unban(user.id, {
+                client.guilds.fetch(guildholding).then(guild => guild.members.unban(user.id, {
                     reason: 'this is a asyncronous unban across all servers | server: ' + guild.name
                 })).then(console.log("unban successful the user was: " + user.username)).catch(err => console.log(""))
         }
